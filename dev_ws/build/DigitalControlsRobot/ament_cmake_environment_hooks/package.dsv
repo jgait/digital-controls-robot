@@ -1,0 +1,4 @@
+source;share/DigitalControlsRobot/local_setup.bash
+source;share/DigitalControlsRobot/local_setup.dsv
+source;share/DigitalControlsRobot/local_setup.sh
+source;share/DigitalControlsRobot/local_setup.zsh

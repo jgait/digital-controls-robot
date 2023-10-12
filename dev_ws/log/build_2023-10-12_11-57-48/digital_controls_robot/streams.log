@@ -1,0 +1,51 @@
+[0.081s] Invoking command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jgait/DigitalControlsRobot/dev_ws/src -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot
+[0.175s] -- The C compiler identification is GNU 11.4.0
+[0.247s] -- The CXX compiler identification is GNU 11.4.0
+[0.255s] -- Detecting C compiler ABI info
+[0.351s] -- Detecting C compiler ABI info - done
+[0.360s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.360s] -- Detecting C compile features
+[0.361s] -- Detecting C compile features - done
+[0.365s] -- Detecting CXX compiler ABI info
+[0.454s] -- Detecting CXX compiler ABI info - done
+[0.463s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.463s] -- Detecting CXX compile features
+[0.464s] -- Detecting CXX compile features - done
+[0.466s] -- Found ament_cmake: 1.3.5 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.673s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.764s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.790s] -- Found ament_lint_auto: 0.12.8 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.883s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.886s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.886s] -- Added test 'lint_cmake' to check CMake code style
+[0.887s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.888s] -- Added test 'xmllint' to check XML markup files
+[0.890s] -- Configuring done
+[0.893s] -- Generating done
+[0.895s] -- Build files have been written to: /home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot
+[0.899s] Invoked command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/jgait/DigitalControlsRobot/dev_ws/src -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot
+[0.901s] Invoking command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot -- -j4 -l4
+[0.944s] Invoked command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot -- -j4 -l4
+[0.978s] Invoking command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot
+[0.986s] -- Install configuration: ""
+[0.987s] -- Execute custom install script
+[0.987s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/config/empty.yaml
+[0.997s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/description/robot.urdf.xacro
+[1.007s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/launch/rsp.launch.py
+[1.017s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/worlds/empty.world
+[1.026s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/ament_index/resource_index/package_run_dependencies/digital_controls_robot
+[1.037s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/ament_index/resource_index/parent_prefix_path/digital_controls_robot
+[1.047s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/environment/ament_prefix_path.sh
+[1.057s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/environment/ament_prefix_path.dsv
+[1.067s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/environment/path.sh
+[1.077s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/environment/path.dsv
+[1.086s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/local_setup.bash
+[1.096s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/local_setup.sh
+[1.105s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/local_setup.zsh
+[1.115s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/local_setup.dsv
+[1.124s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/package.dsv
+[1.135s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/ament_index/resource_index/packages/digital_controls_robot
+[1.145s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/cmake/digital_controls_robotConfig.cmake
+[1.155s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/cmake/digital_controls_robotConfig-version.cmake
+[1.165s] -- Symlinking: /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/package.xml
+[1.179s] Invoked command in '/home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/jgait/DigitalControlsRobot/dev_ws/build/digital_controls_robot

@@ -1,0 +1,1 @@
+/home/jgait/DigitalControlsRobot/dev_ws/build/DigitalControlsRobot/ament_cmake_environment_hooks/local_setup.bash

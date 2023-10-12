@@ -1,0 +1,8 @@
+source;share/DigitalControlsRobot/hook/cmake_prefix_path.ps1
+source;share/DigitalControlsRobot/hook/cmake_prefix_path.dsv
+source;share/DigitalControlsRobot/hook/cmake_prefix_path.sh
+source;share/DigitalControlsRobot/local_setup.bash
+source;share/DigitalControlsRobot/local_setup.dsv
+source;share/DigitalControlsRobot/local_setup.ps1
+source;share/DigitalControlsRobot/local_setup.sh
+source;share/DigitalControlsRobot/local_setup.zsh
