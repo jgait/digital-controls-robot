@@ -1,4 +1,5 @@
 /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/config/empty.yaml
+/home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/description/inertial_macros.xacro
 /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/description/robot.urdf.xacro
 /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/description/robot_core.xacro
 /home/jgait/DigitalControlsRobot/dev_ws/install/digital_controls_robot/share/digital_controls_robot/launch/rsp.launch.py

@@ -1,1 +1,0 @@
-/home/jgait/DigitalControlsRobot/build/digital_controls_robot/ament_cmake_core/digital_controls_robotConfig.cmake
