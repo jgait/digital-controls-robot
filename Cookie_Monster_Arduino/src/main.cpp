@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "motorHandler.h"
+#include "MotorHandler.h"
 
 void setup() {
 	Serial.begin(9600);
