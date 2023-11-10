@@ -22,30 +22,22 @@ void MotorDriver::init(){
 }
 
 
-
-void MotorDriver::directionControl(){
-    // Set motors to maximum speed
-	// For PWM maximum possible values are 0 to 255
-	analogWrite(enablePin, 255);
-
-	// Turn on motor A & B
-	digitalWrite(inputPin1, HIGH);
-	digitalWrite(inputPin2, LOW);
-	delay(2000);
-	
-	// Now change motor directions
-	digitalWrite(inputPin1, LOW);
-	digitalWrite(inputPin2, HIGH);
-	delay(2000);
-	
-	// Turn off motors
-	digitalWrite(inputPin1, LOW);
-	digitalWrite(inputPin2, LOW);
+// needs to be adjusted
+void MotorDriver::directionControl(int direction){
+	// switch directions
+	if(direction == 1){
+		digitalWrite(inputPin1, HIGH);
+		digitalWrite(inputPin2, LOW);
+	}
+	else{
+		digitalWrite(inputPin1, LOW);
+		digitalWrite(inputPin2, HIGH);
+	}
 }
 
 
-
-void MotorDriver::speedControl(){
+// needs to be adjusted
+void MotorDriver::speedControl(float percentage){
     // Turn on motors
 	digitalWrite(inputPin1, LOW);
 	digitalWrite(inputPin2, HIGH);

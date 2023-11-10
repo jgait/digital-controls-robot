@@ -5,18 +5,18 @@ MotorClosedLoop::MotorClosedLoop(int _en_pin, int _in1, int _in2) : myMotor(_en_
 {}
 
 
-void MotorClosedLoop::driveForward(){
+void MotorClosedLoop::toPosition(){
 
 }
 
 
 
-void MotorClosedLoop::driveBackward(){
+void MotorClosedLoop::setVelocity(){
 
 }
 
 
 
-void MotorClosedLoop::spin(){
+void MotorClosedLoop::setAcceleration(){
 
 }

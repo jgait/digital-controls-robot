@@ -19,9 +19,9 @@ class MotorClosedLoop{
 	public:
 		MotorClosedLoop(int _en_pin, int _in1, int _in2);
 
-		void driveForward();
-		void driveBackward();
-		void spin();
+		void toPosition();
+		void setVelocity();
+		void setAcceleration();
 };
 
 
@@ -37,8 +37,8 @@ class MotorDriver{
 		MotorDriver(int _en_pin, int _in1, int _in2);
 
 		void init();
-		void directionControl();
-		void speedControl();
+		void directionControl(int direction);
+		void speedControl(float percentage);
 };
 
 
