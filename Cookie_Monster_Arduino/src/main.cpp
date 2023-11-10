@@ -1,26 +1,35 @@
 #include <Arduino.h>
-#include "MotorHandler.h"
-#include "LineFollowerHandler.h"
+#include "MotorController.h"
+#include "LineFollower.h"
 
-MotorHandler LeftMotor = MotorHandler(enableA, in1, in2);
-MotorHandler RightMotor = MotorHandler(enableB, in3, in4);
-LineFollowerHandler LineFollower;
+
+
+MotorDriver LeftMotor = MotorDriver(enableA, in1, in2);
+MotorDriver RightMotor = MotorDriver(enableB, in3, in4);
+LineFollower LineSensor;
+MotorClosedLoop CookieMonster;
+
+
 
 void setup() {
 	Serial.begin(115200);
 	LeftMotor.init();
 	RightMotor.init();
-	LineFollower.init();
+	LineSensor.init();
 }
 
+
+
 void loop() {
-	// This function breaks the battery, so it's commented out for now.
-	// directionControl();
-	// delay(1000);
 
 	LeftMotor.speedControl();
 	delay(1000);
 	RightMotor.speedControl();
 	delay(1000);
-	// LineFollower.barReading();
+	// CookieMonster.driveForward();
+	// delay(1000);
+
+	// LineSensor.barReading();
 }
+
+

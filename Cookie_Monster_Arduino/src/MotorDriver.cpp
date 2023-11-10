@@ -1,12 +1,16 @@
 #include <Arduino.h>
-#include "MotorHandler.h"
+#include "MotorController.h"
 
-MotorHandler::MotorHandler(int _en_pin, int _in1, int _in2) :   enablePin(_en_pin), 
+
+
+MotorDriver::MotorDriver(int _en_pin, int _in1, int _in2) :   enablePin(_en_pin), 
                                                                 inputPin1(_in1), 
                                                                 inputPin2(_in2) 
 {}
 
-void MotorHandler::init(){
+
+
+void MotorDriver::init(){
     // Set all the motor control pins to outputs
 	pinMode(enablePin, OUTPUT);
 	pinMode(inputPin1, OUTPUT);
@@ -19,7 +23,7 @@ void MotorHandler::init(){
 
 
 
-void MotorHandler::directionControl(){
+void MotorDriver::directionControl(){
     // Set motors to maximum speed
 	// For PWM maximum possible values are 0 to 255
 	analogWrite(enablePin, 255);
@@ -41,7 +45,7 @@ void MotorHandler::directionControl(){
 
 
 
-void MotorHandler::speedControl(){
+void MotorDriver::speedControl(){
     // Turn on motors
 	digitalWrite(inputPin1, LOW);
 	digitalWrite(inputPin2, HIGH);
@@ -62,3 +66,5 @@ void MotorHandler::speedControl(){
 	digitalWrite(inputPin1, LOW);
 	digitalWrite(inputPin2, LOW);
 }
+
+

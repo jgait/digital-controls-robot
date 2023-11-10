@@ -1,8 +1,8 @@
-#include "LineFollowerHandler.h"
+#include "LineFollower.h"
 #include <Arduino.h>
 
 
-void LineFollowerHandler::init(){ 
+void LineFollower::init(){ 
     //For this demo, the IR will only be turned on during reads.
     mySensorBar.setBarStrobe();
     //Other option: Command to run all the time
@@ -23,7 +23,7 @@ void LineFollowerHandler::init(){
     }
 }
 
-void LineFollowerHandler::barReading(){
+void LineFollower::barReading(){
     //Wait 50 ms
     delay(25);
 
