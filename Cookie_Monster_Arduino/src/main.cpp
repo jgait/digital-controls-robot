@@ -2,10 +2,15 @@
 #include "MotorHandler.h"
 #include "LineFollowerHandler.h"
 
+MotorHandler LeftMotor = MotorHandler(enableA, in1, in2);
+MotorHandler RightMotor = MotorHandler(enableB, in3, in4);
+LineFollowerHandler LineFollower;
+
 void setup() {
 	Serial.begin(115200);
-	motorSetup();
-	LineFollowerSetup();
+	LeftMotor.init();
+	RightMotor.init();
+	LineFollower.init();
 }
 
 void loop() {
@@ -13,7 +18,9 @@ void loop() {
 	// directionControl();
 	// delay(1000);
 
-	// speedControl();
-	// delay(1000);
-	BarReading();
+	LeftMotor.speedControl();
+	delay(1000);
+	RightMotor.speedControl();
+	delay(1000);
+	// LineFollower.barReading();
 }
