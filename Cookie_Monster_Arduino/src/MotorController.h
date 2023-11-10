@@ -14,8 +14,11 @@
 class MotorClosedLoop{
 
 	private:
+		MotorDriver myMotor;
 
 	public:
+		MotorClosedLoop(int _en_pin, int _in1, int _in2);
+
 		void driveForward();
 		void driveBackward();
 		void spin();
