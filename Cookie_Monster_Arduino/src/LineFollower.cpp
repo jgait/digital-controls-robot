@@ -1,8 +1,10 @@
 #include "LineFollower.h"
 #include <Arduino.h>
 
+// Constructor
+LineArray::LineArray() : mySensorBar(SX1509_ADDRESS) {}
 
-void LineFollower::init(){ 
+void LineArray::init(){ 
     //For this demo, the IR will only be turned on during reads.
     mySensorBar.setBarStrobe();
     //Other option: Command to run all the time
@@ -14,63 +16,44 @@ void LineFollower::init(){
     //mySensorBar.setInvertBits();
     uint8_t returnStatus = mySensorBar.begin();
     if(returnStatus){
-        Serial.println("The line follower is good to go!");
+        Serial.println("The line sensor is good to go!");
     }
     else
     {
-        Serial.println("The line follower I2C communication FAILED! :(");
+        Serial.println("The line sensor I2C communication FAILED! :(");
         while(1);
     }
 }
 
-void LineFollower::barReading(){
-    //Wait 50 ms
-    delay(25);
-
-
+int LineArray::readRaw(){
     //Get the data from the bar and save it to the circular buffer positionHistory.
-    int temp = mySensorBar.getDensity();
-    if( (temp < 4)&&(temp > 0) ) {
-        positionHistory.pushElement( mySensorBar.getPosition());
+    return mySensorBar.getRaw();
+}
+
+int LineArray::algoPureSum(int raw) {
+    int read = 0;
+    for (int i = 0; i < 8; ++i) {
+        // Check if the ith bit of SenseRead is set
+        if (raw & (1 << i)) {
+            read += weights[7-i];
+        }
     }
 
+    return read;
+}
 
-    //print me a meter!
-    {
-    int16_t i;
-    //Get an average of the last 'n' readings
-    int16_t avePos = positionHistory.averageLast( 10 );
-    Serial.print("Scale = 5/char :");
-    for( i = -130; i <= 130; i = i + 5 ) {
-        if( i < 0 ) {
-            //if avePos within 5 of i
-            if((avePos > (i - 3)) && (avePos <= (i + 2))) {
-                Serial.print("*");
-            }
-            else {
-                Serial.print("-");
-            }
-        }
-        else if( i == 0 ) {
-        //if avePos within 5 of i
-            if((avePos > (i - 3)) && (avePos <= (i + 2))) {
-                Serial.print("*");
-            }
-            else {
-                Serial.print("+");
-            }
-        }
-        else if( i > 0 ) {
-        //if avePos within 5 of i
-            if((avePos > (i - 3)) && (avePos <= (i + 2))) {
-                Serial.print("*");
-            }
-            else {
-                Serial.print("-");
+int LineArray::algoMaxErr(int raw) {
+    int read = 0;
+    for (int i = 0; i < 8; ++i) {
+        // Check if the ith bit of SenseRead is set
+        if (raw & (1 << i)) {
+            // if so get the weight and if it is larger than current read set read to it
+            int weight = weights[7-i];
+            if(abs(weight) > abs(read)) {
+                read = weight;
             }
         }
     }
-    Serial.print(" avePos = ");
-    Serial.println(avePos);
-    }
+
+    return read;
 }

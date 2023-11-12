@@ -1,35 +1,69 @@
 #include <Arduino.h>
-#include "MotorController.h"
+#include "MotorControl.h"
 #include "LineFollower.h"
+#include "pindefs.h"
 
+#define kP 10
+#define kD 5
+#define T 100 // [ms]
 
+#define DBNC_TIME 10 // [ms]
 
-MotorDriver LeftMotor = MotorDriver(enableA, in1, in2);
-MotorDriver RightMotor = MotorDriver(enableB, in3, in4);
-LineFollower LineSensor;
-MotorClosedLoop CookieMonster;
+LineArray LineSensor;
+MotorDriver LeftMotor = MotorDriver(enableA, in1, in2, false);
+MotorDriver RightMotor = MotorDriver(enableB, in3, in4, false);
+DiffDrive myDrive = DiffDrive(&LeftMotor, &RightMotor);
 
+void controller();
 
+int last_err = 0;
+unsigned long last_tick = 0;
+bool active = true;
+unsigned long last_contact = 0;
 
 void setup() {
 	Serial.begin(115200);
-	LeftMotor.init();
-	RightMotor.init();
 	LineSensor.init();
+	myDrive.init();
+
+	pinMode(BTN_PIN, INPUT_PULLUP);
+
+	myDrive.setSpeed(0,0);
 }
-
-
 
 void loop() {
+	unsigned long now = millis();
 
-	LeftMotor.speedControl();
-	delay(1000);
-	RightMotor.speedControl();
-	delay(1000);
-	// CookieMonster.driveForward();
-	// delay(1000);
+	// Check if button is clicked (with debounce)
+	if(!digitalRead(BTN_PIN) && (now - last_contact) > DBNC_TIME) {
+		active = !active;
+		last_contact = now;
 
-	// LineSensor.barReading();
+		if(!active) {
+			myDrive.setSpeed(0,0);
+		}
+	}
+
+	// If its time for a controller tick, run the controller
+	if(now - last_tick > T) {
+		controller();
+	}
 }
 
+void controller() {
+	int raw = LineSensor.readRaw();
+	Serial.print("Raw Sense: ");
+	Serial.print(raw, BIN);
+	int ang_pos = LineSensor.algoPureSum(raw);
+	Serial.print(" Ang pos: ");
+	Serial.print(ang_pos);
+	int ang_err = 0 - ang_pos;
+	Serial.print(" Ang Error: ");
+	Serial.print(ang_err);
+	float ang_vel = kP * ang_err + kD * (ang_err - last_err);
+	Serial.print(" Ang vel: ");
+	Serial.println(ang_vel);
 
+	// if were active, write to motors
+	if(active) myDrive.setSpeed(100, ang_vel);
+}
