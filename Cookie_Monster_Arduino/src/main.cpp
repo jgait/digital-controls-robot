@@ -5,9 +5,7 @@
 
 #define kP 10
 #define kD 5
-#define T 100 // [ms]
-
-#define SLEW_MAX 50 // [% per second]
+#define T 10 // [ms]
 
 #define DBNC_TIME 10 // [ms]
 
@@ -25,7 +23,6 @@ unsigned long last_tick = 0;
 bool active = true;
 bool not_pressed = true;
 unsigned long last_contact = 0;
-const float slew_max = (SLEW_MAX*T)/1000;
 
 void setup() {
 	Serial.begin(115200);
@@ -75,15 +72,7 @@ void controller() {
 	Serial.print(" Ang vel: ");
 	Serial.println(ang_vel);
 
-	// Limit slew rate 
-
-	// if the velocity delta is greater than max slew rate
-	if ( abs(last_ang_vel - ang_vel) > slew_max) {
-
-		// Determine sign and act accordingly
-		ang_vel = (ang_vel > 0) ? last_ang_vel + slew_max : last_ang_vel - slew_max;
-	}
 
 	// if were active, write to motors
-	if(active) myDrive.setSpeed(100, ang_vel);
+	if(active) myDrive.setSpeed(70, ang_vel);
 }

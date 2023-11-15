@@ -5,19 +5,15 @@
 LineArray::LineArray() : mySensorBar(SX1509_ADDRESS) {}
 
 void LineArray::init(){ 
-    //For this demo, the IR will only be turned on during reads.
     mySensorBar.setBarStrobe();
-    //Other option: Command to run all the time
-    //mySensorBar.clearBarStrobe();
-
     //Default dark on light
     mySensorBar.clearInvertBits();
-    //Other option: light line on dark
-    //mySensorBar.setInvertBits();
     uint8_t returnStatus = mySensorBar.begin();
+
     if(returnStatus){
         Serial.println("The line sensor is good to go!");
     }
+
     else
     {
         Serial.println("The line sensor I2C communication FAILED! :(");

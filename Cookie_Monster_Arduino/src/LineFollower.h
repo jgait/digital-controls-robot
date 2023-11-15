@@ -16,6 +16,7 @@ class LineArray{
 
     public:
         LineArray();
+
         void init();
         int readRaw();    
         int algoPureSum(int raw);

@@ -53,9 +53,9 @@ void DiffDrive::setSpeed(float linear_vel, float angular_vel) {
 // ===== Motor Driver Class ====
 
 MotorDriver::MotorDriver(int _en_pin, int _in1, int _in2, bool _reversed) :   enablePin(_en_pin), 
-                                                                inputPin1(_in1), 
-                                                                inputPin2(_in2),
-																reversed(_reversed) 
+                                                                			  inputPin1(_in1), 
+                                                                			  inputPin2(_in2),
+																			  reversed(_reversed) 
 {}
 
 
@@ -113,6 +113,13 @@ void MotorDriver::setSpeed(float percentage){
 
 MotorClosedLoop::MotorClosedLoop(int _en_pin, int _in1, int _in2, bool _reversed, MotorClosedLoop::ControlMode _mode) : myMotor(_en_pin, _in1, _in2, _reversed), my_mode(_mode)
 {}
+
+
+
+void MotorClosedLoop::init() {
+
+}
+
 
 
 void MotorClosedLoop::setTargetPos(float t_vel_rot) {
