@@ -5,7 +5,7 @@
 
 #define kP 10
 #define kD 5
-#define T 10 // [ms]
+#define T 100 // [ms]
 
 #define DBNC_TIME 10 // [ms]
 
@@ -55,24 +55,33 @@ void loop() {
 	// If its time for a controller tick, run the controller
 	if(now - last_tick > T) {
 		controller();
+		last_tick = millis();
 	}
 }
 
 void controller() {
 	int raw = LineSensor.readRaw();
 	Serial.print("Raw Sense: ");
-	Serial.print(raw, BIN);
+	Serial.println(raw, BIN);
 	int ang_pos = LineSensor.algoPureSum(raw);
 	Serial.print(" Ang pos: ");
-	Serial.print(ang_pos);
+	Serial.println(ang_pos);
 	int ang_err = 0 - ang_pos;
 	Serial.print(" Ang Error: ");
-	Serial.print(ang_err);
+	Serial.println(ang_err);
 	float ang_vel = kP * ang_err + kD * (ang_err - last_err);
 	Serial.print(" Ang vel: ");
 	Serial.println(ang_vel);
 
-
+	uint8_t heading = LineSensor.getHeading();
+	Serial.println("---------");
+	Serial.print(LineSensor.getArray()[heading%CBUFFER_SIZE], BIN);
+	Serial.print("\t");
+	Serial.print(LineSensor.getArray()[(heading+3)%CBUFFER_SIZE], BIN);
+	Serial.print("\t");
+	Serial.print(LineSensor.getArray()[(heading+2)%CBUFFER_SIZE], BIN);
+	Serial.print("\t");
+	Serial.println(LineSensor.getArray()[(heading+1)%CBUFFER_SIZE], BIN);
 	// if were active, write to motors
 	if(active) myDrive.setSpeed(70, ang_vel);
 }

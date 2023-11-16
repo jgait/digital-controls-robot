@@ -23,11 +23,30 @@ void LineArray::init(){
 
 int LineArray::readRaw(){
     //Get the data from the bar and save it to the circular buffer positionHistory.
-    return mySensorBar.getRaw();
+    uint8_t raw_data = mySensorBar.getRaw();
+    positionHistory.pushElement(raw_data);
+    
+    return raw_data;
 }
+
+uint8_t* LineArray::getArray(){
+    return positionHistory.getArray();
+}
+
+uint8_t LineArray::getHeading(){
+    return positionHistory.getHeading();
+}
+
 
 int LineArray::algoPureSum(int raw) {
     int read = 0;
+    /*
+    dummy check raw
+    if the value is bad: (as in, on a gap OR cross)
+        look at history first
+    else:
+        continue as normal
+    */
     for (int i = 0; i < 8; ++i) {
         // Check if the ith bit of SenseRead is set
         if (raw & (1 << i)) {
