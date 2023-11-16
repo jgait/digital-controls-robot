@@ -38,22 +38,30 @@ uint8_t LineArray::getHeading(){
 }
 
 
-int LineArray::algoPureSum(int raw) {
+int LineArray::algoPureSum(int raw ) {
     int read = 0;
-    /*
-    dummy check raw
-    if the value is bad: (as in, on a gap OR cross)
-        look at history first
-    else:
-        continue as normal
-    */
+    int sensor_gaps = 0;
+    bool was_zero = true;
+    
+    //if we are not in an anomoly, use the controller
     for (int i = 0; i < 8; ++i) {
         // Check if the ith bit of SenseRead is set
         if (raw & (1 << i)) {
             read += weights[7-i];
+            if(was_zero = true){
+                sensor_gaps += 1;
+                was_zero = false;
+            }
+        }
+        else{
+            was_zero = true;
         }
     }
 
+    //check if we are on an anomoly
+    if ((raw == 0) || (sensor_gaps > 1)) {
+        read = 0;
+    }
     return read;
 }
 
