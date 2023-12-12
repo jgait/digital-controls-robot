@@ -5,7 +5,7 @@
 LineArray::LineArray() : mySensorBar(SX1509_ADDRESS) {}
 
 void LineArray::init(){ 
-    mySensorBar.setBarStrobe();
+    mySensorBar.clearBarStrobe();
     //Default dark on light
     mySensorBar.clearInvertBits();
     uint8_t returnStatus = mySensorBar.begin();
